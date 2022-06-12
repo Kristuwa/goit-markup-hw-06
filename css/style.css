@@ -10,6 +10,7 @@
 --border-bottom-color: #ECECEC;
 --color-icon: #afb1b8;
 --color-icon-close: #000000;
+--btn-hover-color: #188CE8;
 --time: 250ms;
 --function-animation: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -248,6 +249,13 @@ header {
 	letter-spacing: 0.06em;
 	cursor: pointer;
 	text-align: center;
+
+	transition: background-color var(--time) var(--function-animation);
+}
+
+.button:hover, 
+.button:focus {
+	background-color: var(--btn-hover-color);
 }
 
 .backdrop {
@@ -278,8 +286,8 @@ header {
 	left: 50%;
 	padding: 40px;
 
-	min-width: 528px;
-	min-height: 581px;
+	width: 528px;
+	height: 581px;
 
 	background: var(--title-text-color);
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -290,7 +298,7 @@ header {
 }
 
 .modal-title {
-	margin-bottom: 30px;
+	margin-bottom: 12px;
 	font-weight: 700;
 	font-size: 20px;
 	line-height: 1.15;
@@ -300,27 +308,31 @@ header {
 .form {
 	margin-left: auto;
 	margin-right: auto;
-	width: 528px;
 }
 
 .form-field {
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 10px;
 	color: var(--primary-text-color);
 }
 
+label:nth-last-of-type(2) {
+	margin-bottom: 20px;
+}
+
 .form-input {
-	margin-bottom: 10px;
 	padding: 12px 42px;
 	width: 100%;
 	height: 40px;
 
 	border: 1px solid rgba(33, 33, 33, 0.2);
 	border-radius: 4px;
+	outline: none;
 
 	font: inherit;
-	transition: outline var(--time) var(--function-animation);
+	transition: border-color var(--time) var(--function-animation);
 }
 
 .form-label {
@@ -344,32 +356,31 @@ header {
 	transition: color var(--time) var(--function-animation);
 }
 
-.form-textarea {
-	margin: 0;
-	margin-bottom: 20px;
-	padding: 12px 16px;
-	width: 100%;
-	
-	border: 1px solid rgba(33, 33, 33, 0.2);
-	border-radius: 4px;
-
-	transition: outline var(--time) var(--function-animation);
-}
-
-.form-textarea:focus-within {
-	outline: 1px solid var(--accent-color);
-}
-
-.form-field:focus-within > .icon-form {
+.form-field:focus-within > .icon-form,
+.form-field:hover > .icon-form {
 	color: var(--accent-color);
 }
 
-.form-field:focus-within > .form-input {
-	outline: 1px solid var(--accent-color);
+.form-field:focus-within > .form-input,
+.form-field:hover > .form-input {
+	border-color: var(--accent-color);
 }
 
-.form-field:focus-visible .form-input {
-	border-color: var(--accent-color);
+.form-textarea {
+	margin: 0;
+	padding: 12px 16px;
+	width: 100%;
+	resize: none;
+
+	border: 1px solid rgba(33, 33, 33, 0.2);
+	border-radius: 4px;
+	outline: none;
+
+	transition: border-color var(--time) var(--function-animation);
+}
+
+.form-textarea:focus-within, .form-textarea:hover {
+	border-color: var(--accent-color);;
 }
 
 .checkbox-label {
@@ -691,6 +702,8 @@ header {
 
 .footer-container {
 	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
 }
 
 .footer-nav {
@@ -751,10 +764,6 @@ header {
 	color: var(--accent-color);
 }
 
-.footer-socpublic {
-	padding-top: 12px;
-}
-
 .footer-title {
 	margin-bottom: 20px;
 
@@ -768,11 +777,11 @@ header {
 
 .footer-icon {
 	color: var(--title-text-color);
-	background-color: rgba(255, 255, 255, 0.1);;
+	background-color: rgba(255, 255, 255, 0.1);
 	}
 
 .footer-form {
-	padding-left: 93px;
+	margin-left: auto;
 	}
 
 .email {
@@ -783,6 +792,8 @@ header {
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
 	border-radius: 4px;
+	color: var(--title-text-color);
+	font-family: inherit;
 	}
 
 .email::placeholder {
